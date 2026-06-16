@@ -10,7 +10,9 @@ class Database {
 
     private function __construct() {
         $config = require __DIR__ . '/../../config/database.php';
-        $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']}";
+        
+        // DODANO: ;sslmode=require na końcu DSN dla pełnej kompatybilności z chmurą Neon
+        $dsn = "pgsql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};sslmode=require";
         
         try {
             $this->conn = new PDO($dsn, $config['user'], $config['password'], [
@@ -19,7 +21,7 @@ class Database {
                 PDO::ATTR_EMULATE_PREPARES => false,
             ]);
         } catch (PDOException $e) {
-            die("Błąd połączenia z bazą danych: " . $e->getMessage());
+            die("Błąd połączenia z chmurową bazą danych Neon: " . $e->getMessage());
         }
     }
 

@@ -1,8 +1,8 @@
 <?php
 return [
-    'host' => 'localhost',
+    'host' => 'ep-purple-queen-a2fznt4z.eu-central-1.aws.neon.tech',
     'port' => '5432',
-    'dbname' => 'smarttable_db',
-    'user' => 'frshh', // wpisz swój login z Postico 2
-    'password' => ''      // wpisz swoje hasło z Postico 2 lub pozostaw puste
+    'dbname' => 'neondb',
+    'user' => 'neondb_owner',
+    'password' => 'npg_GhqTsARt1y8c'
 ];
